@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Esercizi Javascript 2013-03-07</title>
+	</head>
+
+	<body>
+
+		<h1><b>exercise00a</b>
+
+		try to understand what happens in here:</h1>
+
+		function greets () { <br>
+		 console.log('Hello!'); <br>
+		 greets = function () {<br>
+		   console.log('Bye!');<br>
+		   return greets;<br>
+		 };<br>
+		 return greets;<br>
+		}<br>
+		<br>
+		greets();<br>
+		<br>
+		greets()();<br>
+		<br>
+		greets()()();<br>
+		<br>
+		// La funzione viene sovvrascritta ogni volta che viene chiamata perché non c'è var prima del greets interno (a differenza della versione successiva), per cui dopo la prima chiamata restituirà sempre Bye!<br>
+		<br>
+		function greets () {<br>
+		 console.log('Hello!');<br>
+		 var greets = function () {<br>
+		   console.log('Bye!');<br>
+		   return greets;<br>
+		 };<br>
+		 return greets;<br>
+		}<br>
+		<br>
+		greets();<br>
+		<br>
+		greets()();<br>
+		<br>
+		greets()()();<br>
+		<br>
+		<script src="exercise01.js"></script>
+		<script src="exercise02.js"></script>
+	</body>
+</html>
