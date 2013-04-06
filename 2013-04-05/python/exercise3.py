@@ -5,13 +5,13 @@
 # IMPORTANT: It needs the code on exercise1.py and exercise2.py to be loaded (except the TEST parts) before executing this.
 
 # Nort Wall
-domSemiCircle = INTERVALS(PI)(32)
+domSemiCircle = INTERVALS(PI)(64)
 circleFunction = CONS([COMP([COS, S1]), COMP([SIN, S1])])
 cerchio = MAP(circleFunction)(domSemiCircle)
-roundWall = T([])([])(PROD([cerchio, Q(23)]))
+cerchio = S([1, 2])([11.5, 11.5])(cerchio)
+cerchio = R([1,2])(-PI/2)(cerchio);
+roundWall = T([1, 2, 3])([87.5, 62-11.5, 7])(PROD([cerchio, Q(23)]));
 northWall0 = STRUCT([roundWall]); # floor0 wall
-
-#northWall0 = STRUCT([northWall0first]);
 
 northWall1first = GRID([[-115.5, 2, -5],[-5, 57, -5],[-7 - pillarHeight -1, pillarHeight - 22]]);
 northWall1second = GRID([[-115.5, 2, -5],[-5, pillarLength + 44, -5, 3 + pillarLength, -5],[-7 - pillarHeight -1, pillarHeight - 10]]);
