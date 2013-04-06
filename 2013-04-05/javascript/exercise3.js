@@ -4,15 +4,14 @@
 //Continues from Exercise 2.
 // IMPORTANT: It needs the code on exercise1.js and exercise2.js to be loaded (except the TEST parts) before executing this.
 
-/* Nort Wall
+// Nort Wall
 var domSemiCircle = INTERVALS(PI)(64)
 var circleFunction = CONS([COMP([COS, S1]), COMP([SIN, S1])])
 var cerchio = MAP(circleFunction)(domSemiCircle)
 var cerchio = S([1, 2])([11.5, 11.5])(cerchio)
 var cerchio = R([1,2])([-PI/2])(cerchio);
-var roundWall = T([1, 2, 3])([87.5, 62-11.5, 7])(PROD([cerchio, Q(23)]));
+var roundWall = T([1, 2, 3])([87.5, 62-11.5, 7])(EXTRUDE([pillarHeight])(cerchio));
 var northWall0 = STRUCT([roundWall]); // floor0 wall
-*/
 
 var northWall1first = GRID([[-115.5, 2, -5],[-5, 57, -5],[-7 - pillarHeight -1, pillarHeight - 22]]);
 var northWall1second = GRID([[-115.5, 2, -5],[-5, pillarLength + 44, -5, 3 + pillarLength, -5],[-7 - pillarHeight -1, pillarHeight - 10]]);
@@ -33,7 +32,7 @@ var northWall3WindowsSeparator = GRID([[-115.5, 2, -5],[-5 - pillarLength - 3 - 
 var northWall3roof = GRID([[-115.5, 2, -5],[-5, 57, -5],[-7 - 3*pillarHeight - 3 - 13 - 10 - 1, 2.5]]);
 var northWall3 = STRUCT([northWall3first, northWall3second, northWall3third, northWall3WindowsSeparator, northWall3roof]);
 
-var northWall = STRUCT([northWall1, northWall2, northWall3]);
+var northWall = STRUCT([northWall0, northWall1, northWall2, northWall3]);
 
 //East Wall
 
