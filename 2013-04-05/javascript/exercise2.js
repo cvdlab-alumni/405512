@@ -7,7 +7,7 @@ Define plan by plan, with names floor0, floor1, floor2, floor3, and floor4, the 
 // IMPORTANT: It needs the code on exercise1.js to be loaded (except the TEST part) before executing this.
 
 // floor0
-var floor0 = GRID([[-5, 112.5, -5],[-5, 57, -5],[-5, 2]]);
+var floor0 = GRID([[-5, 112.5, -5],[-5, 57, -5],[-5, 2]]); // IMPORTANT: The circular parts of this floor are solved in exercise3.js with the walls
 
 // floor1
 var floor1Terrace = GRID([[5, -117.5],[-50, 10, -7],[-7 - pillarHeight, 1]]);
