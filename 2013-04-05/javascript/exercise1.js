@@ -75,13 +75,18 @@ var pillars1 = STRUCT([square_pillars1, square_pillar, round_pillars1]);
 // Pillars floor2
 var pillars2_firstRow = GRID([[-5, pillarLength, -25, pillarLength, -80, pillarLength, -5], [-5, pillarLength, -40 - pillarLength - 17], [-7 - 2*pillarHeight - 2, pillarHeight]]);
 var pillars2_secondRow = GRID([[-5, pillarLength, -25, pillarLength, -25, pillarLength, -25, pillarLength, -25, pillarLength, -5], [-47.5, pillarLength, - 17], [-7 - 2*pillarHeight - 2, pillarHeight]]);
-var pillars2 = STRUCT([pillars2_firstRow, pillars2_secondRow]);
+var pillars2_fill = GRID([[-5, pillarLength, -25, pillarLength, -80 - pillarLength - 5], [-5, pillarLength, -40, pillarLength, -17], [-7 - 2*pillarHeight, 2]]); // there is no floor surface here, the pillars here continure from floor1
+var pillars2 = STRUCT([pillars2_firstRow, pillars2_secondRow, pillars2_fill]);
 
 // Pillars floor3
 var pillars3_firstRow = GRID([[-60, pillarLength, -52.5, pillarLength, -5], [-5, pillarLength, -40 - pillarLength - 17], [-7 - 3*pillarHeight - 3, pillarHeight]]);
 var pillars3_secondRow = GRID([[-5, pillarLength, -25, pillarLength, -25, pillarLength, -25, pillarLength, -25, pillarLength, -5], [-47.5, pillarLength, - 17], [-7 - 3*pillarHeight - 3, pillarHeight]]);
 var pillars3 = STRUCT([pillars3_firstRow, pillars3_secondRow]);
 
-// View
+// Building
 var building = STRUCT([foundations, pillars0, pillars1, pillars2, pillars3]);
-VIEW(building);
+
+// BEGIN TEST Exercise 1 (Ignore this block when copying the code for the next exercises)
+var exercise1 = building
+VIEW(exercise1);
+// END TEST Exercise 1

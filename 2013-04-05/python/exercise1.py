@@ -3,7 +3,7 @@
 
 from pyplasm import *
 
-GRID = COMP([INSR(PROD),AA(QUOTE)]); #vGRID is an auxiliary function
+GRID = COMP([INSR(PROD),AA(QUOTE)]); # GRID is an auxiliary function
 
 foundations = GRID([[122.5],[67],[5]]); # 122.5 x 67
 
@@ -29,13 +29,18 @@ pillars1 = STRUCT([square_pillars1, square_pillar, round_pillars1]);
 # Pillars floor2
 pillars2_firstRow = GRID([[-5, pillarLength, -25, pillarLength, -80, pillarLength, -5], [-5, pillarLength, -40 - pillarLength - 17], [-7 - 2*pillarHeight - 2, pillarHeight]]);
 pillars2_secondRow = GRID([[-5, pillarLength, -25, pillarLength, -25, pillarLength, -25, pillarLength, -25, pillarLength, -5], [-47.5, pillarLength, - 17], [-7 - 2*pillarHeight - 2, pillarHeight]]);
-pillars2 = STRUCT([pillars2_firstRow, pillars2_secondRow]);
+pillars2_fill = GRID([[-5, pillarLength, -25, pillarLength, -80 - pillarLength - 5], [-5, pillarLength, -40, pillarLength, -17], [-7 - 2*pillarHeight, 2]]); # there is no floor surface here, the pillars here continure from floor1
+pillars2 = STRUCT([pillars2_firstRow, pillars2_secondRow, pillars2_fill]);
 
 # Pillars floor3
 pillars3_firstRow = GRID([[-60, pillarLength, -52.5, pillarLength, -5], [-5, pillarLength, -40 - pillarLength - 17], [-7 - 3*pillarHeight - 3, pillarHeight]]);
 pillars3_secondRow = GRID([[-5, pillarLength, -25, pillarLength, -25, pillarLength, -25, pillarLength, -25, pillarLength, -5], [-47.5, pillarLength, - 17], [-7 - 3*pillarHeight - 3, pillarHeight]]);
 pillars3 = STRUCT([pillars3_firstRow, pillars3_secondRow]);
 
-# View
-building = STRUCT([foundations, pillars0, pillars1, pillars2, pillars3]);
-VIEW(building);
+# Building
+building1 = STRUCT([foundations, pillars0, pillars1, pillars2, pillars3]);
+
+# BEGIN TEST Exercise 1 (Ignore this block when copying the code for the next exercises)
+exercise1 = building1
+VIEW(exercise1);
+# END TEST Exercise 1
