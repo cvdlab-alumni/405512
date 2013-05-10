@@ -23,14 +23,14 @@ var northWall2first = GRID([[-115.5, 2, -5],[-5, 57, -5],[-7 - 2*pillarHeight -2
 var northWall2second = GRID([[-115.5, 2, -5],[-5, pillarLength + 44, -5, 3 + pillarLength, -5],[-7 - 2*pillarHeight - 2, pillarHeight - 10]]);
 var northWall2third = GRID([[-115.5, 2, -5],[-5, pillarLength + 3, -8, 1, -8, 1, -8, 1, -8, 6, -5, 3 + pillarLength, -5],[-7 - 2*pillarHeight - 2 - 13, 10 + 1]]);
 var northWall2WindowsSeparator = GRID([[-115.5, 2, -5],[-5 - pillarLength - 3 - 8 - 1 - 8 - 1 - 8 - 1 - 8 - 6, 5, -3 - pillarLength - 5],[-7 - 2*pillarHeight - 2 - 12, 1]]);
-var northWall2 = STRUCT([northWall2first, northWall2second, northWall2third, northWall2WindowsSeparator]);
+var northWall2 = STRUCT([northWall2first, northWall2second, northWall2third, northWall2WindowsSeparator]); // floor2 wall
 
 var northWall3first = GRID([[-115.5, 2, -5],[-5, 57, -5],[-7 - pillarHeight -1, pillarHeight - 22]]);
 var northWall3second = GRID([[-115.5, 2, -5],[-5, pillarLength + 44, -5, 3 + pillarLength, -5],[-7 - 3*pillarHeight -3, pillarHeight - 10]]);
 var northWall3third = GRID([[-115.5, 2, -5],[-5, pillarLength + 3, -8, 1, -8, 1, -8, 1, -8, 6, -5, 3 + pillarLength, -5],[-7 - 3*pillarHeight - 3 - 13, 10 + 1]]);
 var northWall3WindowsSeparator = GRID([[-115.5, 2, -5],[-5 - pillarLength - 3 - 8 - 1 - 8 - 1 - 8 - 1 - 8 - 6, 5, -3 - pillarLength - 5],[-7 - 3*pillarHeight - 3 - 12, 1]]);
 var northWall3roof = GRID([[-115.5, 2, -5],[-5, 57, -5],[-7 - 3*pillarHeight - 3 - 13 - 10 - 1, 2.5]]);
-var northWall3 = STRUCT([northWall3first, northWall3second, northWall3third, northWall3WindowsSeparator, northWall3roof]);
+var northWall3 = STRUCT([northWall3first, northWall3second, northWall3third, northWall3WindowsSeparator, northWall3roof]); // floor 3 wall
 
 var northWall = STRUCT([northWall0, northWall1, northWall2, northWall3]);
 
@@ -51,7 +51,7 @@ var westWall2first = GRID([[-5, 112.5, -5],[-60, 2, -5],[-7 - 2*pillarHeight -2,
 var westWall2second = GRID([[-5, 57.5 + 25 + pillarLength + 3, -3, 5, -3, 11 + pillarLength, -5],[-60, 2, -5],[-7 - 2*pillarHeight - 2 - pillarHeight/2.0, + pillarHeight/2.0 + 1]]);
 var westWall2 = STRUCT([westWall2first, westWall2second]); // floor2 wall
 
-var westWall3 = GRID([[-5, 112.5, -5],[-60, 2, -5],[-7 - 3*pillarHeight -3, pillarHeight + 3.5]]);
+var westWall3 = GRID([[-5, 112.5, -5],[-60, 2, -5],[-7 - 3*pillarHeight -3, pillarHeight + 3.5]]); //floor3 wall
 
 var westWall = STRUCT([westWall0, westWall1, westWall2, westWall3]);
 //South Wall

@@ -1,0 +1,1 @@
+#Generate the 3D model of a steering wheel (volante :o) specifically designed for Formula and Sport cars (look on the web for common shapes). Mount it the the 2.5D mock-up.
