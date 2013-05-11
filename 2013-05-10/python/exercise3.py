@@ -260,12 +260,28 @@ centeredModel = T([1,2,3])([-5.9, -1.4, -2.64])(model)
 
 #START exercise3#
 
-rimSize = 0.4826; # 19 inch
-tireWidth = 0.285;
+#tire
+rimSize = 0.4826*1.4; # 19 inch
+tireWidth = 0.285*1.4;
 tire = COLOR(BLACK)(S(3)(2)(TORUS([tireWidth*0.40 + rimSize/2.0, 2*(tireWidth*0.40 + rimSize/2.0)])([36, 72])));
-rimUnderTire = COLOR(GRAY)(S(3)(2)(TORUS([rimSize/2.0, rimSize])([36, 72])));
-rim = STRUCT([rimUnderTire]);
+
+#rim
+rimUnderTire = COLOR(WHITE)(S(3)(2)(TORUS([rimSize/2.0, rimSize])([36, 72])));
+auxGRID = COMP([INSR(PROD),AA(QUOTE)])
+cil=DIFFERENCE([ CYLINDER([rimSize/6,0.05])(50) ,CYLINDER([rimSize/12,0.025])(50) ])
+t1=T([1])([-0.1/2])(auxGRID([[0.1],[rimSize/1.5],[0.05]]))
+t2=R([1,2])(2*PI/5)(t1)
+t3=R([1,2])(2*PI/5)(t2)
+t4=R([1,2])(2*PI/5)(t3)
+t5=R([1,2])(2*PI/5)(t4)
+rimDesign=COLOR(WHITE)(T(3)(tireWidth/1.5)(STRUCT([cil,t1,t2,t3,t4,t5])))
+rim = STRUCT([rimUnderTire, rimDesign]);
+
+#wheel
 wheel = STRUCT([tire, rim]);
-VIEW(wheel);
+#VIEW(wheel)
+
+centeredModelWithWheels = STRUCT([T([1,2,3])([-3.1, -0.8, -2.64])(R([1,3])(PI)(wheel)), T([1,2,3])([-3.1, -0.8, 2.64])(wheel), T([1,2,3])([4.05, -0.8, -2.64])(R([1,3])(PI)(wheel)), T([1,2,3])([4.05, -0.8, 2.64])(wheel), centeredModel]);
+VIEW(centeredModelWithWheels)
 
 #END exercise3#
