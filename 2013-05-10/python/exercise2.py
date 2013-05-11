@@ -223,51 +223,30 @@ def profile_bottom():
 
 	#control points (look blueprint_code.jpeg in images directory)
 
-	fp0 = [[0,0.3,0],[0,-0.1,0.3],[0,0.1,1.57],[0,0,2.1],[0,0,2.64]]
-	fp1 = [[0,0.3,0],[0,1.4,0.2],[0,1.39,0.51],[0,1.42,0.61]]
-	fp2 = [[0,1.42,0.61],[0,2.2,0.83],[0,2.6,1.07],[0,2.65,1.2]]
-	fp3 = [[0,2.65,1.2], [0,2.8,1.47],[0,2.76,1.9],[0,2.9,2.3],[0,2.86,2.6]]
+	bp0 = [[0.3,0,0.2],[0.1,0,2.60],[0,0,2.64],[0.1,0,2.60],[0.3,0,2.64*2-0.2]]
+	bp1 = [[0.3,0,0.2],[0.4,0,0],[10,0,0],[11,0,0.2]]
+	bp2 = [[11,0,2.64*2-0.2],[10,0,2.64*2],[0.4,0,2.64*2],[0.3,0,2.64*2-0.2]]
+	bp3 = [[11,0,2.64*2-0.2], [11.7,0,2.6],[11.8,0,2.64],[11.7,0,2.6],[11,0,0.2]]
 
 	#POLYMARKERS (used for testing)
-	fmp0 = POLYMARKER(1)(fp0)
-	fmp1 = POLYMARKER(1)(fp1)
-	fmp2 = POLYMARKER(1)(fp2)
-	fmp3 = POLYMARKER(1)(fp3)
-	fmp4 = POLYMARKER(1)(fp4)
-	fmp5 = POLYMARKER(1)(fp5)
-	fmp6 = POLYMARKER(1)(fp6)
-	fmp7 = POLYMARKER(1)(fp7)
-	fmp8 = POLYMARKER(1)(fp8)
-	fmp9 = POLYMARKER(1)(fp9)
-	fmp10 = POLYMARKER(1)(fp10)
+	bmp0 = POLYMARKER(1)(bp0)
+	bmp1 = POLYMARKER(1)(bp1)
+	bmp2 = POLYMARKER(1)(bp2)
+	bmp3 = POLYMARKER(1)(bp3)
 
 	# BEZIER CURVES
-	fb0 = BEZIER(S1)(fp0)
-	fb1 = BEZIER(S1)(fp1)
-	fb2 = BEZIER(S1)(fp2)
-	fb3 = BEZIER(S1)(fp3)
-	fb4 = BEZIER(S1)(fp4)
-	fb5 = BEZIER(S1)(fp5)
-	fb6 = BEZIER(S1)(fp6)
-	fb7 = BEZIER(S1)(fp7)
-	fb8 = BEZIER(S1)(fp8)
-	fb9 = BEZIER(S1)(fp9)
-	fb10 = BEZIER(S1)(fp10)
+	bb0 = BEZIER(S1)(bp0)
+	bb1 = BEZIER(S1)(bp1)
+	bb2 = BEZIER(S1)(bp2)
+	bb3 = BEZIER(S1)(bp3)
 
 	# MAPPING
-	fc0 = MAP(fb0)(domain)
-	fc1 = MAP(fb1)(domain)
-	fc2 = MAP(fb2)(domain)
-	fc3 = MAP(fb3)(domain)
-	fc4 = MAP(fb4)(domain)
-	fc5 = MAP(fb5)(domain)
-	fc6 = MAP(fb6)(domain)
-	fc7 = MAP(fb7)(domain)
-	fc8 = MAP(fb8)(domain)
-	fc9 = MAP(fb9)(domain)
-	fc10 = MAP(fb10)(domain)
+	bc0 = MAP(bb0)(domain)
+	bc1 = MAP(bb1)(domain)
+	bc2 = MAP(bb2)(domain)
+	bc3 = MAP(bb3)(domain)
 
-	bottom = STRUCT([dup,dupRT])
+	bottom = STRUCT([bc0, bc1, bc2, bc3])
 
 	return bottom
 
@@ -276,6 +255,7 @@ profileBottom = profile_bottom()
 
 # MODEL
 model = STRUCT([profileSide, profileFront, T(3)(2.64*2)(profileSide), profileBottom])
-VIEW(model)
+centeredModel = T([1,2,3])([-5.9, -1.4, -2.64])(model)
+VIEW(centeredModel)
 
 #END exercise2#
