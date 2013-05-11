@@ -287,4 +287,15 @@ centeredModelWithWheels = STRUCT([T([1,2,3])([-3.1, -0.8, -2.64])(R([1,3])(PI)(w
 #END IMPORT exercise3#
 
 #START exercise4#
-tire = COLOR(BROWN)(S(3)(2)(TORUS([tireWidth*0.40 + rimSize/2.0, 2*(tireWidth*0.40 + rimSize/2.0)])([36, 72])));
+
+#skin
+rubberSteeringWheel = COLOR([1,0.80,0.75])(S(1)(1.2)(TORUS([rimSize/2.0, rimSize/1.5])([36, 72])));
+
+#steering wheel
+steeringWheel = STRUCT([rubberSteeringWheel]);
+#VIEW(steeringWheel)
+
+centeredModelWithWheelsSteering = STRUCT([centeredModelWithWheels, T([1,2,3])([-0.8,0.6,1])(R([1,3])(PI/2)(steeringWheel))]);
+VIEW(centeredModelWithWheelsSteering)
+
+#END exercise4#
