@@ -189,7 +189,7 @@
   exports.scmodel = scmodel;
 
   if (!module.parent) {
-    fs.writeFile('C:/Users/Eder/workspace/405512/showcase/data.json', JSON.stringify(scmodel.toJSON()));
+    fs.writeFile('./data.json', JSON.stringify(scmodel.toJSON()));
   }
 
 }(this));
