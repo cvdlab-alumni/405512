@@ -49,7 +49,7 @@ var mapping = function (v){
 
 //	Create terrain
 
-var base = COLOR(brownColor)(T([0,1,2])([0,0,-2])(CUBOID([btXdim,btYdim,2])));
+var base = COLOR(brownColor)(T([0,1,2])([0,0,-0.5])(CUBOID([btXdim,btYdim,0.5])));
 var terrain = COLOR(brownColor)(MAP(mapping)(domain));
 
 //	Model
@@ -61,8 +61,15 @@ var model = STRUCT([base, terrain]);
 /* Exercise 2 start */
 
 var colorLake = [127/255, 255/255, 212/255, 0.9];
-xLakeRandom = Math.random()*7;
-yLakeRandom = Math.random()*7;
+xLakeRandom = Math.floor(Math.random()*3)*PI/1.5;
+// Control to skip 1x1 grid where settlementA will be
+if(xLakeRandom===0){
+	xLakeRandom = 2*PI/1.5; 
+};
+yLakeRandom = Math.floor(Math.random()*3)*PI/1.5;
+if(yLakeRandom===0){
+	yLakeRandom = 2*PI/1.5;
+};
 xLakeDim = 3;
 yLakeDim = 3;
 var lake = COLOR(colorLake)(T([0,1,2])([xLakeRandom, yLakeRandom, 0])(CUBOID([xLakeDim,yLakeDim,0.025])));
@@ -84,7 +91,7 @@ var forestGenerator = function(treeQuantity, coneRadius){
 	var apex = [0,0,coneRadius];
 	var c1 = BEZIER(S0)([[-coneRadius,0,0],[-coneRadius,coneRadius,0],[0,coneRadius,0],[coneRadius,coneRadius,0],[coneRadius,0,0]]);
 	var trunk = COLOR(colorTrunk)(cylinder(0.025,0.2,12));
-	var cone = COLOR(colorForestGreen)(T([0,1,2])([0,0,0.148])(MAP(CONICAL_SURFACE(apex)(c1))(treeDomain)));
+	var cone = COLOR(colorForestGreen)(T([0,1,2])([0,0,0.198])(MAP(CONICAL_SURFACE(apex)(c1))(treeDomain)));
 	var tree = STRUCT([trunk, cone, R([0,1])([PI])(cone)]);
 
 	for (var i = 0; i<=treeQuantity; i++){
@@ -93,7 +100,7 @@ var forestGenerator = function(treeQuantity, coneRadius){
   				treeXpos = Math.random()*btXdim;
   				treeYpos = Math.random()*btYdim;
   				//	Checks that tree is not positioned on top of a lake
-  				if ((treeXpos<xLakeRandom || treeXpos>xLakeRandom+xLakeDim)&&(treeYpos<yLakeRandom || treeYpos>yLakeRandom+yLakeDim)){
+  				if ((treeXpos<xLakeRandom || treeXpos>xLakeRandom+xLakeDim)&&(treeYpos<yLakeRandom || treeYpos>yLakeRandom+yLakeDim)&&(treeYpos>0.7)){
   					approved = 1;
   				};
   		};
@@ -102,7 +109,29 @@ var forestGenerator = function(treeQuantity, coneRadius){
 	};
 };
 
-var model = STRUCT([base, terrain, lake, forestGenerator(200,0.1)]);
+var model = STRUCT([base, terrain, lake]);
+forestGenerator(200,0.1);
 
 /*	Exercise 4	*/
 
+var colorBeige = [245/255, 245/255, 220/255];
+
+var buildSettlement = function(location){
+	var xStartingPointSettlement = location[0];
+	var yStartingPointSettlement = location[1];
+	var xSettlementRandom = Math.random()/6;
+	var ySettlementRandom = Math.random()/6;
+	var xSettlementRandom2 = Math.random()/6;
+	var ySettlementRandom2 = Math.random()/6;
+	var xSettlementRandom3 = Math.random()/6;
+	var ySettlementRandom3 = Math.random()/6;
+	var houses1stRow = T([0,1,2])([xStartingPointSettlement, yStartingPointSettlement, 0])(SIMPLEX_GRID([[xSettlementRandom, -0.1, 0.1, -xSettlementRandom, xSettlementRandom*2], [ySettlementRandom], [0.18]]));
+	var houses2ndRow = T([0,1,2])([xStartingPointSettlement, yStartingPointSettlement, 0])(SIMPLEX_GRID([[xSettlementRandom*2 + xSettlementRandom2, -xSettlementRandom2, xSettlementRandom2, -0.1, 0.1 ], [-ySettlementRandom*2, ySettlementRandom2], [0.23]]));
+	var houses3rdRow = T([0,1,2])([xStartingPointSettlement, yStartingPointSettlement, 0])(SIMPLEX_GRID([[0.1, -0.1, xSettlementRandom3, -xSettlementRandom3, xSettlementRandom3*2 ], [-ySettlementRandom*2 - ySettlementRandom2*2, ySettlementRandom3], [0.13]]));
+	var settlement = COLOR(colorBeige)(STRUCT([houses1stRow, houses2ndRow, houses3rdRow]));
+	DRAW(settlement);
+};
+
+DRAW(model);
+buildSettlement([0,0]); // First settlement located at origin (0,0)
+buildSettlement([2*PI,0]); // Second settlement

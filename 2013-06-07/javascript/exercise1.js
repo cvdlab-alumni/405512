@@ -49,7 +49,7 @@ var mapping = function (v){
 
 //	Create terrain
 
-var base = COLOR(brownColor)(T([0,1,2])([0,0,-2])(CUBOID([btXdim,btYdim,2])));
+var base = COLOR(brownColor)(T([0,1,2])([0,0,-0.5])(CUBOID([btXdim,btYdim,0.5])));
 var terrain = COLOR(brownColor)(MAP(mapping)(domain));
 
 //	Model

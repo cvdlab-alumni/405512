@@ -47,7 +47,7 @@ var mapping = function (v){
 
 //	Create terrain
 
-var base = COLOR(brownColor)(T([0,1,2])([0,0,-2])(CUBOID([btXdim,btYdim,2])));
+var base = COLOR(brownColor)(T([0,1,2])([0,0,-0.5])(CUBOID([btXdim,btYdim,0.5])));
 var terrain = COLOR(brownColor)(MAP(mapping)(domain));
 
 //	Model
@@ -59,8 +59,15 @@ var model = STRUCT([base, terrain]);
 /* Exercise 2 start */
 
 var colorLake = [127/255, 255/255, 212/255, 0.9];
-xLakeRandom = Math.random()*7;
-yLakeRandom = Math.random()*7;
+xLakeRandom = Math.floor(Math.random()*3)*PI/1.5;
+// Control to skip 1x1 grid where settlementA will be
+if(xLakeRandom===0){
+	xLakeRandom = 2*PI/1.5; 
+};
+yLakeRandom = Math.floor(Math.random()*3)*PI/1.5;
+if(yLakeRandom===0){
+	yLakeRandom = 2*PI/1.5;
+};
 xLakeDim = 3;
 yLakeDim = 3;
 var lake = COLOR(colorLake)(T([0,1,2])([xLakeRandom, yLakeRandom, 0])(CUBOID([xLakeDim,yLakeDim,0.025])));
