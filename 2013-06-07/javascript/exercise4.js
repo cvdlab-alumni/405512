@@ -114,7 +114,7 @@ forestGenerator(200,0.1);
 
 /*	Exercise 4	*/
 
-var colorBeige = [245/255, 245/255, 220/255];
+var colorYellow = [255/255, 255/255, 0/255];
 
 var buildSettlement = function(location){
 	var xStartingPointSettlement = location[0];
@@ -128,10 +128,12 @@ var buildSettlement = function(location){
 	var houses1stRow = T([0,1,2])([xStartingPointSettlement, yStartingPointSettlement, 0])(SIMPLEX_GRID([[xSettlementRandom, -0.1, 0.1, -xSettlementRandom, xSettlementRandom*2], [ySettlementRandom], [0.18]]));
 	var houses2ndRow = T([0,1,2])([xStartingPointSettlement, yStartingPointSettlement, 0])(SIMPLEX_GRID([[xSettlementRandom*2 + xSettlementRandom2, -xSettlementRandom2, xSettlementRandom2, -0.1, 0.1 ], [-ySettlementRandom*2, ySettlementRandom2], [0.23]]));
 	var houses3rdRow = T([0,1,2])([xStartingPointSettlement, yStartingPointSettlement, 0])(SIMPLEX_GRID([[0.1, -0.1, xSettlementRandom3, -xSettlementRandom3, xSettlementRandom3*2 ], [-ySettlementRandom*2 - ySettlementRandom2*2, ySettlementRandom3], [0.13]]));
-	var settlement = COLOR(colorBeige)(STRUCT([houses1stRow, houses2ndRow, houses3rdRow]));
+	var settlement = COLOR(colorYellow)(STRUCT([houses1stRow, houses2ndRow, houses3rdRow]));
 	DRAW(settlement);
+	var cityY = ySettlementRandom*2 + ySettlementRandom2*2 + ySettlementRandom3
+	return cityY;
 };
 
 DRAW(model);
-buildSettlement([0,0]); // First settlement located at origin (0,0)
-buildSettlement([2*PI,0]); // Second settlement
+var settAY = buildSettlement([0,0]); // Settlement A located at origin (0,0)
+var settBY = buildSettlement([2*PI,0]); // Settlement B located at (2*PI,0)
