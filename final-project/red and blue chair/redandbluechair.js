@@ -11,35 +11,35 @@ var yellowColor = [255/255,255/255,0/255];
 var redAndBlueChair = function(){
 
 	//Supporting sticks
-	var supportingStickBase = COLOR(blackColor)(T([0,1,2])([0.01,0,0])(CUBOID([6.5,0.3,0.3])));
-	var supportingStickBorder1 = COLOR(yellowColor)(T([0,1,2])([0,0,0])(CUBOID([0.01,0.3,0.3])));
-	var supportingStickBorder2 = COLOR(yellowColor)(T([0,1,2])([6.51,0,0])(CUBOID([0.01,0.3,0.3])));
+	var supportingStickBase = COLOR(blackColor)(T([0,1,2])([0.001,0,0])(CUBOID([6.5,0.3,0.3])));
+	var supportingStickBorder1 = COLOR(yellowColor)(T([0,1,2])([0,0,0])(CUBOID([0.001,0.3,0.3])));
+	var supportingStickBorder2 = COLOR(yellowColor)(T([0,1,2])([6.501,0,0])(CUBOID([0.001,0.3,0.3])));
 	var supportingStick = STRUCT([supportingStickBase, supportingStickBorder1, supportingStickBorder2]);
 
-	var supportingStickFrontBase = COLOR(blackColor)(T([0,1,2])([0,0.01,0])(CUBOID([0.3,3.28,0.3])));
-	var supportingStickFrontBorder1 = COLOR(yellowColor)(T([0,1,2])([0,0,0])(CUBOID([0.3,0.01,0.3])));
-	var supportingStickFrontBorder2 = COLOR(yellowColor)(T([0,1,2])([0,3.29,0])(CUBOID([0.3,0.01,0.3])));
+	var supportingStickFrontBase = COLOR(blackColor)(T([0,1,2])([0,0.001,0])(CUBOID([0.3,3.28,0.3])));
+	var supportingStickFrontBorder1 = COLOR(yellowColor)(T([0,1,2])([0,0,0])(CUBOID([0.3,0.001,0.3])));
+	var supportingStickFrontBorder2 = COLOR(yellowColor)(T([0,1,2])([0,3.281,0])(CUBOID([0.3,0.001,0.3])));
 	var supportingFrontStick = STRUCT([supportingStickFrontBase, supportingStickFrontBorder1, supportingStickFrontBorder2]);
 
-	var supportingStickBottomBase = COLOR(blackColor)(T([0,1,2])([0,0,0.01])(CUBOID([0.3,0.3,6.88])));
-	var supportingStickBottomBorder1 = COLOR(yellowColor)(T([0,1,2])([0,0,0])(CUBOID([0.3,0.3,0.01])));
-	var supportingStickBottomBorder2 = COLOR(yellowColor)(T([0,1,2])([0,0,6.89])(CUBOID([0.3,0.3,0.01])));
+	var supportingStickBottomBase = COLOR(blackColor)(T([0,1,2])([0,0,0.001])(CUBOID([0.3,0.3,6.88])));
+	var supportingStickBottomBorder1 = COLOR(yellowColor)(T([0,1,2])([0,0,0])(CUBOID([0.3,0.3,0.001])));
+	var supportingStickBottomBorder2 = COLOR(yellowColor)(T([0,1,2])([0,0,6.881])(CUBOID([0.3,0.3,0.001])));
 	var supportingBottomStick = STRUCT([supportingStickBottomBase, supportingStickBottomBorder1, supportingStickBottomBorder2]);
 
-	var supportingStickMiddleBase = COLOR(blackColor)(T([0,1,2])([0,0.01,0])(CUBOID([0.3,4.58,0.3])));
-	var supportingStickMiddleBorder1 = COLOR(yellowColor)(T([0,1,2])([0,0,0])(CUBOID([0.3,0.01,0.3])));
-	var supportingStickMiddleBorder2 = COLOR(yellowColor)(T([0,1,2])([0,4.59,0])(CUBOID([0.3,0.01,0.3])));
+	var supportingStickMiddleBase = COLOR(blackColor)(T([0,1,2])([0,0.001,0])(CUBOID([0.3,4.58,0.3])));
+	var supportingStickMiddleBorder1 = COLOR(yellowColor)(T([0,1,2])([0,0,0])(CUBOID([0.3,0.001,0.3])));
+	var supportingStickMiddleBorder2 = COLOR(yellowColor)(T([0,1,2])([0,4.581,0])(CUBOID([0.3,0.001,0.3])));
 	var supportingMiddleStick = STRUCT([supportingStickMiddleBase, supportingStickMiddleBorder1, supportingStickMiddleBorder2]);
 
-	var supportingStickBackBase = COLOR(blackColor)(T([0,1,2])([0,0.01,0])(CUBOID([0.3,4.83,0.3])));
-	var supportingStickBackBorder1 = COLOR(yellowColor)(T([0,1,2])([0,0,0])(CUBOID([0.3,0.01,0.3])));
-	var supportingStickBackBorder2 = COLOR(yellowColor)(T([0,1,2])([0,4.84,0])(CUBOID([0.3,0.01,0.3])));
+	var supportingStickBackBase = COLOR(blackColor)(T([0,1,2])([0,0.001,0])(CUBOID([0.3,4.83,0.3])));
+	var supportingStickBackBorder1 = COLOR(yellowColor)(T([0,1,2])([0,0,0])(CUBOID([0.3,0.001,0.3])));
+	var supportingStickBackBorder2 = COLOR(yellowColor)(T([0,1,2])([0,4.831,0])(CUBOID([0.3,0.001,0.3])));
 	var supportingBackStick = STRUCT([supportingStickBackBase, supportingStickBackBorder1, supportingStickBackBorder2]);
 
 	//Armrests
-	var armRestBase = COLOR(blackColor)(T([0,1,2])([0,0,0.01])(CUBOID([0.9,0.3,4.48])));
-	var armRestBorder1 = COLOR(yellowColor)(T([0,1,2])([0,0,0])(CUBOID([0.9,0.3,0.01])));
-	var armRestBorder2 = COLOR(yellowColor)(T([0,1,2])([0,0,4.49])(CUBOID([0.9,0.3,0.01])));
+	var armRestBase = COLOR(blackColor)(T([0,1,2])([0,0,0.001])(CUBOID([0.9,0.3,4.48])));
+	var armRestBorder1 = COLOR(yellowColor)(T([0,1,2])([0,0,0])(CUBOID([0.9,0.3,0.001])));
+	var armRestBorder2 = COLOR(yellowColor)(T([0,1,2])([0,0,4.481])(CUBOID([0.9,0.3,0.001])));
 	var armRest = STRUCT([armRestBase, armRestBorder1, armRestBorder2]);
 
 	//Seats

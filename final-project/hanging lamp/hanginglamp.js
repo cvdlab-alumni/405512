@@ -14,7 +14,7 @@ var cylinder = function(radius, height, quality) {
 
 var lampCreator = function(){
 
-	var domain = DOMAIN([[0,1],[0,2*PI]])([30,50]);
+	var domain = DOMAIN([[0,1],[0,2*PI]])([40,80]);
 	var connector1 = COLOR(blackColor)(T([0,1,2])([-0.11,0,-0.11])(CUBOID([0.22,0.3,0.22])));
 	var connector2 = COLOR(blackColor)(T([0,1,2])([-0.11,-2.8,-0.11])(CUBOID([0.2,0.3,0.2])));
 	var c0 = BEZIER(S0)([[0.12, 0, 0], [0.16, 0, -0.08], [0.19, 0, -0.11], [0.19, 0, -0.13], [0.19, 0, -0.5], [0.19, 0, -1], [0.19, 0, -1.5], [0.19, 0, -2], [0.19, 0, -2.4], [0.19, 0, -2.42], [0.19, 0, -2.47], [0.16, 0, -2.47], [0.12, 0, -2.5],]);
@@ -35,7 +35,7 @@ var hangingLamp = function(){
 
 	//Lines
 	var radiusLine = 0.03;
-	var lamp1line1 = T([0,1,2])([3,-0.001,2.5])(R([1,2])([PI/2])(COLOR(whiteColor)(cylinder(radiusLine, 8, 36))));
+	var lamp1line1 = T([0,1,2])([3,-0.001,2.5])(R([1,2])([PI/2])(COLOR(whiteColor)(cylinder(radiusLine, 8, 256))));
 	var domain2D = DOMAIN([[0,1],[0,1]])([32, 64]);
 	var profile1 = BEZIER(S0)([[3, -0.1, 2.525], [3, -10.6, 2.52], [3, -10.705, 2.52], [3, -10.705, 2.65], [3, -10.705, 2.9]]);
 	var profile2 = BEZIER(S0)([[3, -0.1, 2.58], [3, -10.6, 2.58], [3, -10.65, 2.58], [3, -10.65, 2.65], [3, -10.65, 2.9]]);
@@ -45,11 +45,11 @@ var hangingLamp = function(){
 	var surface2 = MAP(BEZIER(S1)([profile1, profile12DOWN, profile2]))(domain2D);
 	var lamp1line2 = COLOR(whiteColor)(T([0,1,2])([0.025,0.02,5.5])(R([0,2])([PI/2])(STRUCT([surface1, surface2]))));
 
-	var lamp2line1 = T([0,1,2])([0.75,-0.001,1.5])(R([1,2])([PI/2])(COLOR(whiteColor)(cylinder(radiusLine, 9.8, 36))));
-	var lamp2line2 = T([0,1,2])([3.55,-0.001,1.5])(R([1,2])([PI/2])(COLOR(whiteColor)(cylinder(radiusLine, 9.8, 36))));
+	var lamp2line1 = T([0,1,2])([0.75,-0.001,1.5])(R([1,2])([PI/2])(COLOR(whiteColor)(cylinder(radiusLine, 9.8, 256))));
+	var lamp2line2 = T([0,1,2])([3.55,-0.001,1.5])(R([1,2])([PI/2])(COLOR(whiteColor)(cylinder(radiusLine, 9.8, 256))));
 
-	var lamp3line1 = T([0,1,2])([1.8,-0.001,0.45])(R([1,2])([PI/2])(COLOR(whiteColor)(cylinder(radiusLine, 8.8, 36))));
-	var lamp3line2 = T([0,1,2])([1.8,-0.001,3.25])(R([1,2])([PI/2])(COLOR(whiteColor)(cylinder(radiusLine, 8.8, 36))));
+	var lamp3line1 = T([0,1,2])([1.8,-0.001,0.45])(R([1,2])([PI/2])(COLOR(whiteColor)(cylinder(radiusLine, 8.8, 256))));
+	var lamp3line2 = T([0,1,2])([1.8,-0.001,3.25])(R([1,2])([PI/2])(COLOR(whiteColor)(cylinder(radiusLine, 8.8, 256))));
 
 	//Lamps
 	var lamp1 = T([0,1,2])([3,-8,2.5])(lampCreator());

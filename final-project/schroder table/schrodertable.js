@@ -17,13 +17,13 @@ var cylinder = function(radius, height, quality) {
 
 var schroderTable = function(){
 
-	var coloringDepth = 0.00001;
-	var domain2D = PROD1x1([INTERVALS(1)(20),INTERVALS(1)(20)]);
+	var coloringDepth = 0.001;
+	var domain2D = PROD1x1([INTERVALS(1)(40),INTERVALS(1)(40)]);
 
 	//Base disk
 	var radiusBase = 3;
-	var base = COLOR(whiteColor)(cylinder(radiusBase, 0.3, 128));
-	var baseTop = COLOR(redColor)(cylinder(radiusBase, coloringDepth, 128));
+	var base = COLOR(whiteColor)(cylinder(radiusBase, 0.3, 256));
+	var baseTop = COLOR(redColor)(cylinder(radiusBase, coloringDepth, 256));
 	var baseDisk = STRUCT([R([1,2])([PI/2])(base), T([0,1,2])([0,0.001,0])(R([1,2])([PI/2])(baseTop))]);
 
 	//Lower Section
@@ -76,7 +76,7 @@ var schroderTable = function(){
 	var topSection = STRUCT([top1, top2, topXFilling1, topXFilling2, topZFilling1, topZFilling2]);
 
 	//Ornament bars
-	var yellowBar = COLOR(yellowColor)(T([0,1,2])([-0.6,9.2-0.4,-2.7])(CUBOID([lowerSectionWidth,lowerSectionWidth,6.5])));
+	var yellowBar = COLOR(yellowColor)(T([0,1,2])([-0.6,9.2-0.5,-2.7])(CUBOID([lowerSectionWidth+0.1,lowerSectionWidth+0.1,6.5])));
 	var blueBar = COLOR(blueColor)(T([0,1,2])([-1,9.6,-3])(CUBOID([lowerSectionWidth,lowerSectionWidth,lowerSectionLength])));
 
 	//Model

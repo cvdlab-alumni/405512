@@ -17,19 +17,21 @@ var cylinder = function(radius, height, quality) {
 
 var wheelBarrow = function(){
 
-	var domain2D = PROD1x1([INTERVALS(1)(20),INTERVALS(1)(20)]);
+	var domain2D = PROD1x1([INTERVALS(1)(40),INTERVALS(1)(40)]);
 
 	//Wheel
-	var mainWheel = COLOR(redColor)(cylinder(1, 0.4, 128));
-	var borderWheel = COLOR(blackColor)(T([0,1,2])([0,0,0.05])(cylinder(1.1, 0.3, 128)));
+	var mainWheel = COLOR(redColor)(cylinder(1, 0.4, 256));
+	var borderWheel = COLOR(blackColor)(T([0,1,2])([0,0,0.05])(cylinder(1.1, 0.3, 256)));
 	var wheel = T([0,1,2])([0,0,-0.2])(STRUCT([mainWheel, borderWheel]));
 
 	//Bars
-	var wheelBar1 = COLOR(blackColor)(T([0,1,2])([0,0,-2.2])(cylinder(0.1, 4.4, 128)));
-	var wheelBar2 = COLOR(whiteColor)(T([0,1,2])([0,0,-2.2001])(cylinder(0.099, 4.401, 128)));
-	var pushingBar11 = COLOR(whiteColor)(cylinder(0.1, 6, 128));
-	var pushingBar12 = COLOR(blackColor)(T([0,1,2])([0,0,-0.001])(cylinder(0.0999, 7, 128)));
-	var pushingBar1 = T([0,1,2])([-0.3,0.21,1.8])(R([0,2])([PI/2])(STRUCT([pushingBar11, pushingBar12])));
+	var wheelBar1 = COLOR(blackColor)(T([0,1,2])([0,0,-2.2])(cylinder(0.1, 4.4, 256)));
+	var wheelBar2 = COLOR(whiteColor)(T([0,1,2])([0,0,-2.201])(cylinder(0.1, 0.001, 256)));
+	var wheelBar3 = COLOR(whiteColor)(T([0,1,2])([0,0,2.2])(cylinder(0.1, 0.001, 256)));
+	var pushingBar11 = COLOR(whiteColor)(cylinder(0.1, 6, 256));
+	var pushingBar12 = COLOR(blackColor)(T([0,1,2])([0,0,6])(cylinder(0.1, 0.9, 256)));
+	var pushingBar13 = COLOR(blackColor)(T([0,1,2])([0,0,-0.001])(cylinder(0.1, 0.001, 256)));
+	var pushingBar1 = T([0,1,2])([-0.3,0.21,1.8])(R([0,2])([PI/2])(STRUCT([pushingBar11, pushingBar12, pushingBar13])));
 	var pushingBar2 = T([0,1,2])([0,0,-3.6])(pushingBar1);
 	var gripRadius = 0.02;
 	var c0 = BEZIER(S0)([[-0.09,0.2,-gripRadius],[-0.1,0.15,-gripRadius],[-0.2,0,-gripRadius],[0,-0.155,-gripRadius],[0.2,0,-gripRadius],[0.1,0.15,-gripRadius],[0.09,0.2,-gripRadius]]);
@@ -41,7 +43,7 @@ var wheelBarrow = function(){
 	var connectorBezier = STRUCT([connectorBezierInner, connectorBezierOuter]);
 	var connector1 = COLOR(whiteColor)(T([0,1,2])([0,-0.089,1.8])(connectorBezier));
 	var connector2 = T([0,1,2])([0,0,-3.6])(connector1);
-	var bars = STRUCT([wheelBar1, wheelBar2, pushingBar1, pushingBar2, connector1, connector2]);
+	var bars = STRUCT([wheelBar1, wheelBar2, wheelBar3, pushingBar1, pushingBar2, connector1, connector2]);
 	
 	//Sides
 	var sc0 = BEZIER(S0)([[-0.4,1.8,1.95],[4,1.8,1.95]]);
