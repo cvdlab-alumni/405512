@@ -17,14 +17,14 @@ var cylinder = function(radius, height, quality) {
 
 var schroderTable = function(){
 
-	var coloringDepth = 0.001;
+	var coloringDepth = 0.003;
 	var domain2D = PROD1x1([INTERVALS(1)(40),INTERVALS(1)(40)]);
 
 	//Base disk
 	var radiusBase = 3;
 	var base = COLOR(whiteColor)(cylinder(radiusBase, 0.3, 256));
 	var baseTop = COLOR(redColor)(cylinder(radiusBase, coloringDepth, 256));
-	var baseDisk = STRUCT([R([1,2])([PI/2])(base), T([0,1,2])([0,0.001,0])(R([1,2])([PI/2])(baseTop))]);
+	var baseDisk = STRUCT([R([1,2])([PI/2])(base), T([0,1,2])([0,0.003,0])(R([1,2])([PI/2])(baseTop))]);
 
 	//Lower Section
 	var lowerSectionHeight = 5.5;
@@ -55,10 +55,23 @@ var schroderTable = function(){
 	var topSectionHeight = lowerSectionWidth;
 	var topSectionLength = 6.8;
 	var topSectionWidth = 6.8;
-	var tc0 = BEZIER(S0)([[0,0,0],[topSectionLength,0,0]]);
-	var tc1 = BEZIER(S0)([[0,0,topSectionWidth],[topSectionLength,0,topSectionWidth]]);
+	var tc0 = BEZIER(S0)([[0,0,0],[2.4,0,0]]);
+	var tc1 = BEZIER(S0)([[0,0,topSectionWidth],[2.4,0,topSectionWidth]]);
 	var topBezier1 = MAP(BEZIER(S1)([tc0,tc1]))(domain2D);
-	var top1 = COLOR(blackColor)(T([0,1,2])([-topSectionLength/2,9.2,-topSectionLength/2])(topBezier1));
+	var square1 = T([0,1,2])([-topSectionLength/2,9.2,-topSectionLength/2])(topBezier1);
+	var tc2 = BEZIER(S0)([[2.4,0,0],[2.8,0,0]]);
+	var tc3 = BEZIER(S0)([[2.4,0,0.4],[2.8,0,0.4]]);
+	var topBezier2 = MAP(BEZIER(S1)([tc2,tc3]))(domain2D);
+	var square2 = T([0,1,2])([-topSectionLength/2,9.2,-topSectionLength/2])(topBezier2);
+	var tc4 = BEZIER(S0)([[2.4,0,3.9],[2.8,0,3.9]]);
+	var tc5 = BEZIER(S0)([[2.4,0,topSectionWidth],[2.8,0,topSectionWidth]]);
+	var topBezier3 = MAP(BEZIER(S1)([tc4,tc5]))(domain2D);
+	var square3 = T([0,1,2])([-topSectionLength/2,9.2,-topSectionLength/2])(topBezier3);
+	var tc6 = BEZIER(S0)([[2.8,0,0],[6.8,0,0]]);
+	var tc7 = BEZIER(S0)([[2.8,0,topSectionWidth],[6.8,0,topSectionWidth]]);
+	var topBezier4 = MAP(BEZIER(S1)([tc6,tc7]))(domain2D);
+	var square4 = T([0,1,2])([-topSectionLength/2,9.2,-topSectionLength/2])(topBezier4);
+	var top1 = COLOR(blackColor)(STRUCT([square1, square2, square3, square4]));
 	var top2 = T([0,1,2])([0,topSectionHeight,0])(top1);
 
 	var tc2 = BEZIER(S0)([[0,0,0],[topSectionWidth,0,0]]);
@@ -77,7 +90,10 @@ var schroderTable = function(){
 
 	//Ornament bars
 	var yellowBar = COLOR(yellowColor)(T([0,1,2])([-0.6,9.2-0.5,-2.7])(CUBOID([lowerSectionWidth+0.1,lowerSectionWidth+0.1,6.5])));
-	var blueBar = COLOR(blueColor)(T([0,1,2])([-1,9.6,-3])(CUBOID([lowerSectionWidth,lowerSectionWidth,lowerSectionLength])));
+	var bbc0 = BEZIER(S0)([[0,0,0],[lowerSectionWidth,0,0]]);
+	var bbc1 = BEZIER(S0)([[0,0,lowerSectionLength],[lowerSectionWidth,0,lowerSectionLength]]);
+	var bbBezier1 = MAP(BEZIER(S1)([bbc0,bbc1]))(domain2D);
+	var blueBar = COLOR(blueColor)(T([0,1,2])([-1,9.6,-3])(bbBezier1));
 
 	//Model
 	var model = STRUCT([baseDisk, lowerSection, middleSection, topSection, yellowBar, blueBar]);
